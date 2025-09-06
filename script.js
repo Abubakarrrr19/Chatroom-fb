@@ -6,12 +6,12 @@ function registerForm(event) {
   let userName = document.getElementById("fullName")
   let password = document.getElementById("register-password")
   createUserWithEmailAndPassword(auth, email.value, password.value)
-      .then((userCredential) => {
+      .then(async(userCredential) => {
           // Signed up 
           const user = userCredential.user;
-          addUserToDb(email.value, userName.value, user.uid)
+          await addUserToDb(email.value, userName.value, user.uid)
           alert("SignUp Successfully <3")
-          getCurrentUser() //ye function add kr raha to db nhi chal raha but iska bina db chal raha or register ka baad redirect users pr nhi horaha
+          getCurrentUser()
       })
       .catch((error) => {
           const errorCode = error.code;

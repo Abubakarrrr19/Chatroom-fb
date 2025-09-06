@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatRoom - Private</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --incoming: #ffffff;
+      --outgoing: #d1e7ff;
+      --accent: #5b8cff;
+      --muted: #98a0b3;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 100%);
+      color: #12202b;
+    }
+
+    .chat-header {
+      margin: 0;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 18px;
+      border-bottom: 1px solid #eef2f6;
+      background: #f9fbff;
+    }
+
+    .back-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .back-btn img {
+      width: 20px;
+      height: 20px;
+    }
+
+    #messagesBox {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      background: linear-gradient(180deg, rgba(88, 136, 255, 0.02), transparent 40%);
+    }
+
+    .message {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+      max-width: 78%;
+    }
+
+    .message .time {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .message.incoming {
+      align-self: flex-start;
+    }
+
+    .message.incoming .bubble {
+      background: var(--incoming);
+      border-radius: 12px;
+      padding: 10px 12px;
+      box-shadow: 0 4px 14px rgba(16, 24, 40, 0.04);
+      border-top-left-radius: 4px;
+    }
+
+    .message.outgoing {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .message.outgoing .bubble {
+      background: var(--outgoing);
+      border-radius: 12px;
+      padding: 10px 12px;
+      box-shadow: 0 6px 18px rgba(24, 48, 95, 0.06);
+      border-top-right-radius: 4px;
+    }
+
+    .avatar-sm {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .avatar-sm img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .input-container {
+      padding: 10px;
+      border-top: 1px solid #eef2f6;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      background: #fff;
+    }
+
+    #message-input {
+      flex: 1;
+      background: #f7f9fc;
+      border-radius: 10px;
+      padding: 8px 10px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      height: 40px;
+      resize: none;
+    }
+
+    #sendMsgBtn {
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 0;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    @media (max-width: 480px) {
+      .chat-header {
+        font-size: 16px;
+        padding: 12px;
+      }
+
+      .message {
+        max-width: 88%;
+      }
+
+      #sendMsgBtn {
+        padding: 6px 10px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="chat-header">
+    <button id="backBtn" class="back-btn">
+      <img src="https://play-lh.googleusercontent.com/jCZ9mvIzYyZK4xCoFmsqp9alvnteCyTvcawHcXx1uL-UT7u7r4iTopSf-uqpC2K_LmeE=w526-h296-rw" alt="Back" />
+    </button>
+    Chatroom
+  </h1>
+
+  <div id="messagesBox">
+  
+  </div>
+
+  <div class="input-container">
+    <textarea id="message-input" placeholder="Enter your message"></textarea>
+    <button id="sendMsgBtn">Send</button>
+  </div>
+
+  <script type="module" src="config.js"></script>
+  <script type="module" src="script.js"></script>
+  <script type="module" src="chatroom.js"></script>
+  <script type="module" src="users.js"></script>
+</body>
+
+</html>
